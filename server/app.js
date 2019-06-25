@@ -3,10 +3,11 @@ const graphqlHttp = require('express-graphql');
 const mongoose = require('mongoose');
 
 const schema = require('./schema/schema');
+const { connectionString } = require('./env');
 
 const app = express();
 
-mongoose.connect('<connection-string>');
+mongoose.connect(connectionString);
 mongoose.connection.once('open', () => {
   console.log('connected to database');
 })
